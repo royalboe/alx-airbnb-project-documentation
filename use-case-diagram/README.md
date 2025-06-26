@@ -1,6 +1,7 @@
 # 🏡 Airbnb Clone – Use Case Diagram
 
 ## 📌 Overview
+
 This document provides a visual representation of the primary **actors** (users) and their **interactions** with the system for the backend of the Airbnb Clone. The use case diagram helps identify the core functionalities required and the responsibilities of each type of user.
 
 ---
@@ -8,6 +9,7 @@ This document provides a visual representation of the primary **actors** (users)
 ## 🎭 Actors and Their Use Cases
 
 ### 👤 Guest
+
 - Register / Login
 - Search and filter properties
 - Book a property
@@ -19,6 +21,7 @@ This document provides a visual representation of the primary **actors** (users)
 - Message hosts
 
 ### 🏠 Host
+
 - Register / Login
 - Add/edit/delete property listings
 - Manage availability and pricing
@@ -28,6 +31,7 @@ This document provides a visual representation of the primary **actors** (users)
 - Set cancellation policies
 
 ### 🛠️ Admin
+
 - View/manage all users and listings
 - Suspend or ban users
 - Monitor payments and bookings
@@ -53,6 +57,7 @@ This document provides a visual representation of the primary **actors** (users)
 The use case diagram can be found in the `/use-case-diagram/` directory as:
 
 - `use-case-diagram.png` (exported)
+- ![Airbnb Backend Requirements](./use-case.png)
 
 ---
 
