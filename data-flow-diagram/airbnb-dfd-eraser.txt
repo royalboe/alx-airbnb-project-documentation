@@ -1,0 +1,81 @@
+title Airbnb Project Data Flow - Flow Chart
+
+// External Entities
+Guest [icon: user, color: lightblue]
+Host [icon: home, color: lightgreen]
+Admin [icon: shield, color: orange]
+Payment Gateway [icon: stripe, color: purple]
+
+// Data Stores
+Users DB [icon: database, color: blue]
+Properties DB [icon: database, color: green]
+Bookings DB [icon: database, color: teal]
+Payments DB [icon: database, color: purple]
+Reviews DB [icon: database, color: yellow]
+
+// Core Processes
+User Registration and Authentication [icon: log-in, color: lightblue]
+Property Management [icon: edit, color: lightgreen]
+Search and Booking [icon: search, color: teal]
+Booking Availability Check [shape: diamond, icon: calendar, color: teal]
+Create Booking [icon: calendar-plus, color: teal]
+Payment Processing [icon: credit-card, color: purple]
+Send to Payment Gateway [icon: send, color: purple]
+Store Payment Record [icon: file-text, color: purple]
+Reviews and Ratings [icon: star, color: yellow]
+Notifications [icon: bell, color: orange]
+
+// Notification Endpoints
+Notify Guest [shape: oval, icon: mail, color: lightblue]
+Notify Host [shape: oval, icon: mail, color: lightgreen]
+Notify Admin [shape: oval, icon: mail, color: orange]
+
+// Relationships
+
+// User Registration & Authentication
+Guest > User Registration and Authentication: Registration data
+Host > User Registration and Authentication: Registration data
+User Registration and Authentication > Users DB: Store user
+User Registration and Authentication > Guest: Auth token, success message
+User Registration and Authentication > Host: Auth token, success message
+
+// Property Management
+Host > Property Management: Listing details
+Property Management > Properties DB: Store/update listing
+Property Management > Host: Confirmation
+
+// Search & Booking
+Guest > Search and Booking: Search filters, booking request
+Search and Booking > Properties DB: Query listings
+Search and Booking > Booking Availability Check
+Booking Availability Check > Create Booking: Available
+Booking Availability Check > Guest: Not available
+Create Booking > Bookings DB: Store booking
+Create Booking > Guest: Booking confirmation
+
+// Payment Processing
+Guest > Payment Processing: Payment info
+Payment Processing > Send to Payment Gateway
+Send to Payment Gateway > Payment Gateway: Payment request
+Payment Gateway > Store Payment Record: Payment confirmation
+Store Payment Record > Payments DB: Store payment
+Store Payment Record > Payment Processing
+Payment Processing > Notify Host: Payment confirmation
+Payment Processing > Guest: Payment confirmation
+
+// Reviews & Ratings
+Guest > Reviews and Ratings: Review and rating data
+Reviews and Ratings > Reviews DB: Store review
+Reviews and Ratings > Properties DB: Update property rating
+Reviews and Ratings > Guest: Review confirmation
+
+// Notifications
+Property Management > Notifications: Listing status
+Create Booking > Notifications: Booking update
+Payment Processing > Notifications: Payment status
+Reviews and Ratings > Notifications: New review
+Admin > Notifications: System update
+
+Notifications > Notify Guest
+Notifications > Notify Host
+Notifications > Notify Admin
